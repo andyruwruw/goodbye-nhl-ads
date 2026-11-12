@@ -1,0 +1,65 @@
+/*
+ * On-player break panel (src/content/ad-overlay.js), adopted into its shadow
+ * root after src/shared/theme.css. Sizes are px instead of rem because rem
+ * would resolve against ESPN's root font size.
+ */
+
+.overlay {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 8px 8px 12px;
+  font-family: var(--arw-font-sans);
+  font-size: 13px;
+  line-height: 1.25;
+  color: var(--arw-text-1);
+  background: color-mix(in srgb, var(--arw-surface) 92%, transparent);
+  border: 1px solid var(--arw-border);
+  border-radius: 8px;
+  box-shadow: var(--arw-shadow-overlay);
+  -webkit-font-smoothing: antialiased;
+}
+
+.overlay__icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  color: var(--arw-text-2);
+}
+
+.overlay__button {
+  min-height: 30px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--arw-on-brand);
+  background: var(--arw-brand);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 150ms;
+}
+
+.overlay__button:hover {
+  background: var(--arw-brand-hover);
+}
+
+.overlay__button:active {
+  filter: brightness(0.9);
+}
+
+.overlay__button:focus-visible {
+  outline: 2px solid var(--arw-ring);
+  outline-offset: 1px;
+}
+
+.overlay__button--secondary {
+  color: var(--arw-text-1);
+  background: var(--arw-muted);
+  border-color: var(--arw-border);
+}
+
+.overlay__button--secondary:hover {
+  background: color-mix(in srgb, var(--arw-muted), var(--arw-text-1) 8%);
+}

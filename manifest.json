@@ -1,0 +1,70 @@
+{
+  "manifest_version": 3,
+  "name": "Hate NHL Ads",
+  "version": "0.1.0",
+  "description": "Mutes ESPN live broadcasts while an ad is on screen.",
+  "permissions": [
+    "storage",
+    "unlimitedStorage"
+  ],
+  "host_permissions": [
+    "*://*.espn.com/*"
+  ],
+  "icons": {
+    "16": "icon.png",
+    "32": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "action": {
+    "default_title": "Hate NHL Ads",
+    "default_popup": "src/popup/popup.html",
+    "default_icon": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.espn.com/watch/*"
+      ],
+      "js": [
+        "src/shared/player-page.js",
+        "src/page/stream-sniffer.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": false,
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "*://*.espn.com/watch/*"
+      ],
+      "js": [
+        "src/shared/player-page.js",
+        "src/shared/settings.js",
+        "src/shared/recon-log.js",
+        "src/content/dom-walk.js",
+        "src/content/polling-task.js",
+        "src/content/player-locator.js",
+        "src/content/ad-badge-detector.js",
+        "src/content/ad-overlay.js",
+        "src/content/mute-controller.js",
+        "src/content/recon-scanner.js",
+        "src/content/network-sniffer.js",
+        "src/content/main.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "src/shared/theme.css",
+        "src/content/ad-overlay.css"
+      ],
+      "matches": [
+        "*://*.espn.com/*"
+      ]
+    }
+  ]
+}

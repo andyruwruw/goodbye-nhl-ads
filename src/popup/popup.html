@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../shared/theme.css">
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <header class="header">
+      <img class="header__icon" src="../../icon.png" alt="">
+      <h1 class="header__title">Hate NHL Ads</h1>
+    </header>
+
+    <section class="card">
+      <label class="toggle">
+        <span class="toggle__text">
+          <span class="toggle__label">Mute during ads</span>
+          <span class="toggle__hint">Mutes while the break countdown is on screen</span>
+        </span>
+        <input type="checkbox" role="switch" class="switch" id="enabled">
+      </label>
+
+      <label class="toggle">
+        <span class="toggle__text">
+          <span class="toggle__label">Recon mode</span>
+          <span class="toggle__hint">Logs ad signals for debugging</span>
+        </span>
+        <input type="checkbox" role="switch" class="switch" id="recon">
+      </label>
+
+      <label class="field">
+        <span class="field__label">Badge CSS selector</span>
+        <input type="text" class="field__input" id="badgeSelector" placeholder=".ad-badge-overlay--container" spellcheck="false">
+      </label>
+    </section>
+
+    <section class="card">
+      <h2 class="card__title">Recon log</h2>
+      <div class="buttons">
+        <button class="button button--secondary" id="markAd">Mark: ad on screen</button>
+        <button class="button button--secondary" id="markGame">Mark: game is back</button>
+        <button class="button button--primary" id="download">Download log</button>
+        <button class="button button--ghost" id="clear">Clear log</button>
+      </div>
+      <p class="status">
+        <span id="count"></span>
+        <span id="message"></span>
+      </p>
+    </section>
+
+    <script src="../shared/settings.js"></script>
+    <script src="../shared/recon-log.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>
